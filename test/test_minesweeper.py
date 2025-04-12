@@ -5,13 +5,15 @@ from src.minesweeper import Minesweeper
 def game():
     return Minesweeper(5, 5)
 
-def test_minesweeper_initialization():
+def test_minesweeper_initialization(game):
     """Test if Minesweeper initializes correctly"""
     assert game.dimension == 5
     assert game.num_mines == 5
     assert len(game.board) == 5
+    assert len(game.board[0]) == 5
+    assert game.board != []
     assert len(game.dug) == 0
-    assert game.dimension>= game.num_mines
+    assert game.dimension >= game.num_mines
     """Test if correct number of mines are placed"""
     mine_count = sum(row.count(-1) for row in game.board) 
     assert mine_count == 5
