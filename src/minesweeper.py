@@ -110,10 +110,4 @@ class Minesweeper:
                 print("Congratulations! You cleared the board.")
                 break
         
-
-if __name__ == "__main__":
-    dimension = 3
-    num_mines = 2
-    game = Minesweeper(dimension, num_mines)
-    game.play()
     
