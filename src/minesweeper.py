@@ -99,6 +99,8 @@ class Minesweeper:
                         break
                     else:
                         print(f"Invalid position! Please enter numbers between 0 and {self.dimension-1}")
+                    if (row, col) in self.dug:
+                        print("You have already dug this position! Please choose another.")
                 except ValueError:
                     print("Please enter valid numbers!")
             
