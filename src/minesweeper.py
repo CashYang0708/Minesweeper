@@ -44,10 +44,6 @@ class Minesweeper:
         return count
     
     def dig(self, row: int, col:int):
-        # Check if the position is valid
-        if row < 0 or row >= self.dimension or col < 0 or col >= self.dimension:
-            print("Invalid position")
-            return False
         
         self.dug.add((row, col))
 
@@ -70,9 +66,15 @@ class Minesweeper:
     
     def __str__(self):
         # Create a string representation of the board
-        board_str = ""
+        board_str = "  "
+        for j in range(self.dimension):
+            board_str += str(j) + " "
+        board_str += "\n"
+
         for row in range(self.dimension):
             for col in range(self.dimension):
+                if col == 0:
+                    board_str += str(row) + " "
                 if (row, col) in self.dug:
                     board_str += str(self.board[row][col]) + " "
                 else:
@@ -85,8 +87,21 @@ class Minesweeper:
         while len(self.dug) < self.dimension * self.dimension - self.num_mines:
             print("Current board:")
             print(self)
-            row = int(input("Enter row to dig: "))
-            col = int(input("Enter column to dig: "))
+            
+            # Keep asking for valid coordinates
+            while True:
+                try:
+                    row = int(input("Enter row to dig: "))
+                    col = int(input("Enter column to dig: "))
+                    
+                    # Check if position is valid
+                    if 0 <= row < self.dimension and 0 <= col < self.dimension:
+                        break
+                    else:
+                        print(f"Invalid position! Please enter numbers between 0 and {self.dimension-1}")
+                except ValueError:
+                    print("Please enter valid numbers!")
+            
             if not self.dig(row, col):
                 break
             if len(self.dug) == self.dimension * self.dimension - self.num_mines:

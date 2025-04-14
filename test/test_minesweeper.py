@@ -18,13 +18,6 @@ def test_minesweeper_initialization(game):
     mine_count = sum(row.count(-1) for row in game.board) 
     assert mine_count == 5
 
-def test_invalid_position(game):
-    """Test digging at invalid positions"""
-    assert not game.dig(-1, 0)  
-    assert not game.dig(0, -1)
-    assert not game.dig(5, 0)
-    assert not game.dig(0, 5)
-
 def test_neighbor_bombs():
     """Test counting neighboring bombs"""
     test_board = [

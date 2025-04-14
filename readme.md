@@ -28,7 +28,7 @@ pip install -r requirements.txt
 Run the game with default settings (default 5x5 board with 5 mines):
 
 ```sh
-python main.py
+python3 main.py
 ```
 
 You can modify the `dimension` and `num_mines` variables in `main.py` to change the board size and number of mines.
